@@ -1,5 +1,6 @@
 
-import { MapPin, Phone, Instagram, Clock } from 'lucide-react';
+import { MapPin, Phone, Instagram, Clock, Lock } from 'lucide-react';
+
 
 export function Footer() {
     return (
@@ -60,8 +61,11 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className="border-t border-slate-800 pt-6 text-center text-slate-500 text-xs">
-                &copy; {new Date().getFullYear()} Cassio Barbearia. Todos os direitos reservados. | <span className="text-slate-400">Mepstack | Serviços de Tecnologia</span>
+            <div className="border-t border-slate-800 pt-6 text-center text-slate-500 text-xs flex flex-col gap-2 items-center">
+                <span>&copy; {new Date().getFullYear()} Cassio Barbearia. Todos os direitos reservados. | <span className="text-slate-400">Mepstack | Serviços de Tecnologia</span></span>
+                <a href="/admin" className="opacity-0 hover:opacity-20 transition-opacity p-2" title="Admin Area">
+                    <Lock className="w-3 h-3" />
+                </a>
             </div>
         </footer>
     );
