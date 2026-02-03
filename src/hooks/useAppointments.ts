@@ -54,5 +54,37 @@ export function useAppointments() {
         return data;
     };
 
-    return { getAppointmentsByDate, createAppointment, loading };
+    const cancelAppointment = async (id: string) => {
+        if (!import.meta.env.VITE_SUPABASE_URL) return;
+
+        setLoading(true);
+        const { error } = await supabase
+            .from('appointments')
+            .delete()
+            .eq('id', id);
+
+        setLoading(false);
+        if (error) throw error;
+    };
+
+    const getAppointmentsByPhone = async (phone: string) => {
+        if (!import.meta.env.VITE_SUPABASE_URL) return [];
+
+        setLoading(true);
+        const { data, error } = await supabase
+            .from('appointments')
+            .select('*')
+            .eq('phone', phone)
+            .gte('date', new Date().toISOString()) // Only future appointments
+            .order('date', { ascending: true });
+
+        setLoading(false);
+        if (error) {
+            console.error('Error fetching appointments by phone:', error);
+            return [];
+        }
+        return data as Appointment[];
+    };
+
+    return { getAppointmentsByDate, getAppointmentsByPhone, createAppointment, cancelAppointment, loading };
 }

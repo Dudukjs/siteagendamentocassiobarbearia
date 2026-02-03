@@ -35,7 +35,7 @@ export function Hero({ onStart }: HeroProps) {
                     Agende seu corte ou barba em segundos. Profissional qualificado e preços imperdíveis.
                 </p>
 
-                <div className="pt-4 flex justify-center gap-4">
+                <div className="pt-4 flex flex-col items-center justify-center gap-4">
                     <Button
                         onClick={onStart}
                         className="h-14 px-8 text-lg rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] animate-pulse hover:animate-none transition-all"
@@ -43,6 +43,10 @@ export function Hero({ onStart }: HeroProps) {
                         <Calendar className="mr-2 w-5 h-5" />
                         Agendar Agora
                     </Button>
+
+                    <a href="/meus-agendamentos" className="text-slate-400 hover:text-white text-sm font-medium transition-colors hover:underline decoration-primary/50 underline-offset-4">
+                        Ver meus agendamentos
+                    </a>
                 </div>
             </motion.div>
         </section>

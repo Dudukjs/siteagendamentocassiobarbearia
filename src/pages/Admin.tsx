@@ -72,7 +72,7 @@ export function Admin() {
                                         <p className="text-primary font-medium">{serviceName}</p>
                                         <p className="text-sm text-slate-400">{format(new Date(appt.date), 'dd/MM/yyyy')}</p>
                                     </div>
-                                    <div className="mt-4 md:mt-0 text-right">
+                                    <div className="mt-4 md:mt-0 text-right flex items-center gap-3">
                                         <a
                                             href={`https://wa.me/${appt.phone.replace(/\D/g, '')}`}
                                             target="_blank"
@@ -81,6 +81,13 @@ export function Admin() {
                                         >
                                             <span className="font-mono">{appt.phone}</span>
                                         </a>
+                                        <button
+                                            onClick={() => handleDelete(appt.id!)}
+                                            className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                                            title="Cancelar Agendamento"
+                                        >
+                                            <Trash2 className="w-5 h-5" />
+                                        </button>
                                     </div>
                                 </div>
                             )
